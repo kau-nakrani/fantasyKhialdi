@@ -117,8 +117,11 @@ trigger.forEach(el => el.addEventListener('click', event => {
 	toggleModal(event);
 }));
 
+
 //trigger.addEventListener("click", toggleModal);
-closeButton.addEventListener("click", toggleModal);
+if(closeButton){
+	closeButton.addEventListener("click", toggleModal);
+}
 window.addEventListener("click", windowOnClick);
 // _BEGIN > PLAY FANTASY SECTION MODAL < SHB -->
 
