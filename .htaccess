@@ -16,23 +16,6 @@ RewriteRule . /index.html [L]
     SetOutputFilter DEFLATE
 </FilesMatch>
 
-<IfModule mod_expires.c>
-	ExpiresActive On
-	ExpiresByType text/css "access 28 days"
-	ExpiresByType text/html "access 28 days"
-	ExpiresByType image/gif "access 28 days"
-	ExpiresByType image/png "access 28 days"
-	ExpiresByType image/jpg "access 28 days"
-	ExpiresByType image/jpeg "access 28 days"
-	ExpiresByType image/webp "access 28 days"
-	ExpiresByType image/x-icon "access 28 days"
-	ExpiresByType application/pdf "access 28 days"
-	ExpiresByType application/javascript "access 28 days"
-	ExpiresByType text/x-javascript "access 28 days"
-	ExpiresByType application/x-shockwave-flash "access 28 days"
-	ExpiresDefault "access 28 days"
-</IfModule>
-
 <IfModule mod_headers.c>
 	<filesMatch "\.(ico|jpe?g|png|gif|webp|swf)$">
 		Header set Cache-Control "public"
@@ -46,4 +29,38 @@ RewriteRule . /index.html [L]
 	<filesMatch "\.(x?html?|php)$">
 		Header set Cache-Control "private, must-revalidate"
 	</filesMatch>
+</IfModule>
+
+
+<IfModule mod_expires.c>
+  ExpiresActive On
+
+ # Images
+  ExpiresByType image/jpeg "access plus 1 year"
+  ExpiresByType image/gif "access plus 1 year"
+  ExpiresByType image/png "access plus 1 year"
+  ExpiresByType image/webp "access plus 1 year"
+  ExpiresByType image/svg+xml "access plus 1 year"
+  ExpiresByType image/x-icon "access plus 1 year"
+
+  # Video
+  ExpiresByType video/webm "access plus 1 year"
+  ExpiresByType video/mp4 "access plus 1 year"
+  ExpiresByType video/mpeg "access plus 1 year"
+
+  # Fonts
+  ExpiresByType font/ttf "access plus 1 year"
+  ExpiresByType font/otf "access plus 1 year"
+  ExpiresByType font/woff "access plus 1 year"
+  ExpiresByType font/woff2 "access plus 1 year"
+  ExpiresByType application/font-woff "access plus 1 year"
+
+  # CSS, JavaScript
+  ExpiresByType text/css "access plus 1 year"
+  ExpiresByType text/javascript "access plus 1 year"
+  ExpiresByType application/javascript "access plus 1 year"
+
+  # Others
+  ExpiresByType application/pdf "access plus 1 year"
+  ExpiresByType image/vnd.microsoft.icon "access plus 1 year"
 </IfModule>
