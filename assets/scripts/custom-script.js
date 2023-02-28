@@ -95,20 +95,29 @@ var swiper = new Swiper(".play-fantasy-swiper", {
 // _BEGIN > PLAY FANTASY SECTION < SHB -->
 // _BEGIN > PLAY FANTASY SECTION MODAL < SHB -->
 var modal = document.querySelector(".modal");
-var trigger = document.querySelector(".trigger");
+var trigger = document.querySelectorAll(".trigger");
 var closeButton = document.querySelector(".close-button");
 
-function toggleModal() {
-  modal.classList.toggle("show-modal");
+function toggleModal(event) {
+	modal.classList.toggle("show-modal");
+	if(event){
+		let video_url = event.currentTarget.dataset.vurl;
+		var element = document.querySelector('.show-modal .play-fantasy-modal-body iframe').src= video_url;
+	}	
 }
 
-function windowOnClick(event) {
+function windowOnClick(event) {	
   if (event.target === modal) {
     toggleModal();
   }
 }
 
-trigger.addEventListener("click", toggleModal);
+
+trigger.forEach(el => el.addEventListener('click', event => {
+	toggleModal(event);
+}));
+
+//trigger.addEventListener("click", toggleModal);
 closeButton.addEventListener("click", toggleModal);
 window.addEventListener("click", windowOnClick);
 // _BEGIN > PLAY FANTASY SECTION MODAL < SHB -->
