@@ -100,6 +100,7 @@ var closeButton = document.querySelector(".close-button");
 
 function toggleModal(event) {
 	modal.classList.toggle("show-modal");
+	modal.style.cssText="display:block";
 	if(event){
 		let video_url = event.currentTarget.dataset.vurl;
 		var element = document.querySelector('.show-modal .play-fantasy-modal-body iframe').src= video_url;
